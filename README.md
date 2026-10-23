@@ -31,14 +31,14 @@ npm run dev
 - 주소: https://soyee-1469.github.io/tomatok_translate/
 - 화면별 주소 예: `/services`, `/services/translate`, `/emoticon`, `/emoticon/new`, `/emoticon/my`
 
-## 지갑 탭 → 포토카드 (별도 프로젝트)
+## 지갑 탭 → 지갑 슬라이드 (별도 프로젝트)
 
-포토카드·지갑 시안은 `photocard/service/app`에 따로 있고, 하단 **지갑** 탭은 그 페이지로 링크만 겁니다.
+지갑 화면은 `바이탈링/ring` 앱의 `/wallet`(지갑 여러 개 슬라이드)에 있고, 하단 **지갑** 탭은 그 페이지로 링크만 겁니다. 포토카드 앱의 **지갑 연결하기** 버튼도 같은 곳으로 갑니다.
 
 ```bash
-cd ../photocard
-python3 -m http.server 5500
+cd ../바이탈링/ring
+npm run dev   # http://localhost:5180
 ```
 
-이후 지갑 탭을 누르면 http://localhost:5500/service/app/ 로 이동합니다.
+이후 지갑 탭을 누르면 http://localhost:5180/wallet 로 이동합니다.
 다른 주소를 쓰려면 `.env`에 `VITE_WALLET_URL=...` 을 넣으세요.

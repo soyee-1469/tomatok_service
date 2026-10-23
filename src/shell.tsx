@@ -54,11 +54,11 @@ const GNB_ITEMS = [
 ] as const
 
 /**
- * 지갑 탭 → 포토카드·지갑 시안(별도 프로젝트 photocard/service/app).
- * 로컬: photocard 폴더에서 `python3 -m http.server 5500` 실행 후 열림.
+ * 지갑 탭 → 지갑 슬라이드 화면(별도 프로젝트 바이탈링/ring, /wallet).
+ * 로컬: ring 폴더에서 `npm run dev` (포트 5180) 실행 후 열림.
  * 다른 주소를 쓰려면 .env 에 VITE_WALLET_URL 을 넣는다.
  */
-const WALLET_URL: string = import.meta.env.VITE_WALLET_URL ?? 'http://localhost:5500/service/app/'
+const WALLET_URL: string = import.meta.env.VITE_WALLET_URL ?? 'http://localhost:5180/wallet'
 
 export function Gnb() {
   const loc = useLocation()
