@@ -1,0 +1,83 @@
+import { ArrowLeft } from '@phosphor-icons/react'
+import { Link, useLocation } from 'react-router-dom'
+
+export function Phone({ children, className }: { children: React.ReactNode; className?: string }) {
+  return (
+    <div className={['phone', className].filter(Boolean).join(' ')}>
+      <div className="status">
+        <span>9:41</span>
+        <span>LTE 100%</span>
+      </div>
+      {children}
+    </div>
+  )
+}
+
+export function Header({
+  title,
+  brand,
+  onBack,
+  right,
+  className,
+}: {
+  title?: string
+  brand?: boolean
+  onBack?: () => void
+  right?: React.ReactNode
+  className?: string
+}) {
+  return (
+    <div className={['header', className].filter(Boolean).join(' ')}>
+      {onBack ? (
+        <button className="icon-btn" type="button" onClick={onBack} aria-label="뒤로">
+          <ArrowLeft size={22} weight="light" />
+        </button>
+      ) : (
+        <div style={{ width: 40 }} />
+      )}
+      {brand ? <div className="brand">TomaTok</div> : title ? <h1>{title}</h1> : <div />}
+      {right ?? <div style={{ width: 40 }} />}
+    </div>
+  )
+}
+
+export function Footer({ children }: { children: React.ReactNode }) {
+  return <div className="footer air">{children}</div>
+}
+
+const GNB_ITEMS = [
+  { to: '/friends', label: '친구', icon: '👤', badge: 'dot' as const },
+  { to: '/chat', label: '대화', icon: '💬', badge: '88' as const },
+  { to: '/wallet', label: '지갑', icon: '👜', center: true },
+  { to: '/services', label: '서비스', icon: '▦' },
+  { to: '/more', label: '더보기', icon: '⋯' },
+] as const
+
+export function Gnb() {
+  const loc = useLocation()
+  return (
+    <nav className="gnb gnb-wallet" aria-label="하단 메뉴">
+      {GNB_ITEMS.map((item) => {
+        const on =
+          item.to === '/wallet' || item.to === '/services'
+            ? loc.pathname.startsWith(item.to)
+            : loc.pathname === item.to
+        const center = 'center' in item && item.center
+        return (
+          <Link
+            key={item.to}
+            to={item.to}
+            className={`gnb-item${on ? ' on' : ''}${center ? ' center' : ''}`}
+          >
+            <span className={`gnb-ico${center ? ' fab' : ''}`} aria-hidden>
+              {center ? '👜' : item.icon}
+              {'badge' in item && item.badge === 'dot' ? <i className="gnb-dot" /> : null}
+              {'badge' in item && item.badge === '88' ? <i className="gnb-count">88</i> : null}
+            </span>
+            <span className="gnb-label">{item.label}</span>
+          </Link>
+        )
+      })}
+    </nav>
+  )
+}

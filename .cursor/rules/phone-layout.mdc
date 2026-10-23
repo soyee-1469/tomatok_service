@@ -1,0 +1,12 @@
+---
+description: Phone mock layout — 360 canvas, 20px side inset, 320 content
+alwaysApply: true
+---
+
+# Phone layout
+
+- Phone canvas width: **360px**
+- Side padding (when used): **20px** each side
+- Content width: **320px** (`360 − 20 − 20`)
+
+Do not invent other horizontal insets for the phone frame. Full-bleed elements (header, footer, sheets) may span 360; padded body content stays within 320.

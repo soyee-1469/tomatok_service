@@ -1,0 +1,1407 @@
+/* Emoticon service — reuse global tokens, scoped prefixes */
+
+.emo-head-right {
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.emo-pad {
+  padding-bottom: 28px;
+}
+
+.phone .phone-scroll {
+  scrollbar-width: none;
+}
+
+.phone .phone-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.emo-tabs {
+  display: flex;
+  background: var(--surface);
+  flex-shrink: 0;
+  padding: 0 8px;
+}
+
+.emo-tab {
+  flex: 1;
+  height: 40px;
+  border: 0;
+  background: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  position: relative;
+}
+
+.emo-tab.on {
+  color: var(--red);
+}
+
+.emo-tab.on::after {
+  content: "";
+  position: absolute;
+  left: 20%;
+  right: 20%;
+  bottom: 0;
+  height: 2px;
+  background: var(--red);
+  border-radius: 2px;
+}
+
+.emo-promo {
+  margin: 0 -4px 18px;
+}
+
+.emo-promo-track {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0 16px 0 4px;
+  scrollbar-width: none;
+}
+
+.emo-promo-track::-webkit-scrollbar {
+  display: none;
+}
+
+.emo-promo-card {
+  flex: 0 0 86%;
+  height: 132px;
+  border: 0;
+  padding: 14px 12px 14px 16px;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  scroll-snap-align: start;
+  text-align: left;
+}
+
+.emo-promo-card.theme-kongz {
+  background: linear-gradient(135deg, #ffe4ea 0%, #ffd0d8 100%);
+}
+
+.emo-promo-card.theme-tomatok {
+  background: linear-gradient(135deg, #ffe8e6 0%, #ffd4ce 100%);
+}
+
+.emo-promo-card.theme-sheep {
+  background: linear-gradient(135deg, #e8f6ee 0%, #d4eedd 100%);
+}
+
+.emo-promo-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.emo-promo-copy em {
+  display: block;
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--red);
+}
+
+.emo-promo-copy b {
+  display: block;
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  line-height: 1.3;
+}
+
+.emo-promo-stills {
+  position: relative;
+  width: 132px;
+  height: 104px;
+  flex-shrink: 0;
+}
+
+.emo-promo-stills img {
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  background: transparent;
+}
+
+.emo-promo-stills img:nth-child(1) {
+  left: 0;
+  top: 16px;
+  z-index: 2;
+}
+
+.emo-promo-stills img:nth-child(2) {
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.emo-promo-stills img:nth-child(3) {
+  right: 18px;
+  bottom: 0;
+  z-index: 3;
+}
+
+.emo-promo-dots {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.emo-promo-dots i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #d5d7de;
+}
+
+.emo-promo-dots i.on {
+  background: var(--red);
+}
+
+.emo-hlist {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.emo-hlist::-webkit-scrollbar {
+  display: none;
+}
+
+.emo-hlist .emo-set-card {
+  flex: 0 0 calc((100% - 12px) / 2);
+}
+
+.emo-set-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 12px;
+}
+
+.emo-set-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.emo-set-meta {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  min-height: 54px;
+}
+
+.emo-set-meta b {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  line-height: 18px;
+  word-break: keep-all;
+}
+
+.emo-set-meta span {
+  display: block;
+  margin-top: 2px;
+  height: 16px;
+  font-size: 11px;
+  line-height: 16px;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.emo-set-thumb {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.emo-set-thumb img {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 16px;
+  display: block;
+  object-fit: contain;
+  background: #fff;
+}
+
+.emo-set-thumb em {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  font-style: normal;
+  font-size: 9px;
+  font-weight: 800;
+  color: #fff;
+  background: var(--red);
+  border-radius: 999px;
+  padding: 2px 6px;
+}
+
+.emo-grid {
+  display: grid;
+  gap: 2px;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
+}
+
+.emo-grid.cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.emo-grid.cols-5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.emo-cell {
+  position: relative;
+  border: 0;
+  background: transparent;
+  border-radius: 8px;
+  padding: 2px;
+  aspect-ratio: 1;
+  z-index: 0;
+  transform: scale(1);
+  transition: transform 0.18s ease;
+}
+
+.emo-cell.pop {
+  z-index: 2;
+  transform: scale(1.22);
+  background: #fff;
+}
+
+.emo-cell img {
+  width: 108%;
+  height: 108%;
+  margin: -4%;
+  object-fit: contain;
+  display: block;
+}
+
+.emo-search-wrap {
+  background: #fff;
+  padding: 4px 16px 10px;
+  flex-shrink: 0;
+}
+
+.emo-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 12px;
+  background: #f4f5f8;
+  border-radius: 12px;
+  color: var(--muted);
+}
+
+.emo-search-bar input {
+  flex: 1;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+}
+
+.emo-search-bar button {
+  border: 0;
+  background: none;
+  color: #888;
+  display: grid;
+  place-items: center;
+}
+
+.emo-chip-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.emo-chip-head .section-title {
+  margin-bottom: 0;
+}
+
+.emo-text-btn {
+  border: 0;
+  background: none;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.emo-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.emo-chips button {
+  height: 32px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 16px;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.emo-chips button.on {
+  background: var(--red);
+  color: #fff;
+}
+
+.emo-quiet {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.emo-result-count {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.emo-empty {
+  padding: 48px 16px;
+  text-align: center;
+}
+
+.emo-empty b {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.emo-empty p {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.emo-detail-scroll {
+  background: #fff;
+}
+
+.emo-detail-page {
+  padding: 8px 16px 24px;
+}
+
+.emo-detail-hero {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.emo-detail-art {
+  display: grid;
+  place-items: center;
+  height: 96px;
+}
+
+.emo-detail-art img {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  display: block;
+}
+
+.emo-detail-hero h2 {
+  margin-top: 10px;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.3;
+}
+
+.emo-detail-by {
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.emo-detail-meta {
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.emo-detail-meta i {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #c8c8cc;
+}
+
+.emo-detail-char {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.emo-hash {
+  height: 24px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 12px;
+  background: #f4f5f8;
+  font-size: 12px;
+  font-weight: 700;
+  color: #404040;
+}
+
+.emo-detail-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.emo-notice {
+  margin-top: 22px;
+}
+
+.emo-notice b {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.emo-notice ul {
+  margin: 10px 0 0;
+  padding-left: 16px;
+}
+
+.emo-notice li {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin-top: 6px;
+}
+
+.emo-agree {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #404040;
+  line-height: 1.45;
+}
+
+.emo-agree input {
+  margin-top: 2px;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--red);
+  flex-shrink: 0;
+}
+
+.emo-notice-owned {
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #404040;
+}
+
+.emo-cta-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.emo-using {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #404040;
+}
+
+.emo-sheet-dim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 8;
+  display: flex;
+  align-items: flex-end;
+}
+
+.emo-sheet,
+.emo-menu-sheet {
+  width: 100%;
+  background: #fff;
+  border-radius: 20px 20px 0 0;
+  padding: 18px 16px 22px;
+}
+
+.emo-sheet {
+  position: relative;
+  text-align: center;
+}
+
+.emo-sheet-x {
+  position: absolute;
+  top: 6px;
+  right: 4px;
+}
+
+.emo-preview-stage {
+  height: 200px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  margin: 8px 0 12px;
+}
+
+.emo-preview-stage img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+}
+
+.emo-preview-stage img.is-anim {
+  animation: emo-bob 0.9s ease-in-out infinite;
+}
+
+.emo-preview-stage.bg-white {
+  background: #fff;
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.emo-preview-stage.bg-gray {
+  background: #f3f4f8;
+}
+
+.emo-preview-stage.bg-dark {
+  background: #2b2b2e;
+}
+
+.emo-sheet b {
+  display: block;
+  font-size: 16px;
+}
+
+.emo-sheet > span {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.emo-anim-tag {
+  display: inline-block;
+  margin-top: 8px;
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--red);
+}
+
+.emo-bg-opts {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.emo-bg-opts button {
+  height: 30px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 16px;
+  background: #f4f5f8;
+  font-size: 12px;
+  font-weight: 700;
+  color: #444;
+}
+
+.emo-bg-opts button.on {
+  background: var(--red);
+  color: #fff;
+}
+
+.emo-menu-sheet {
+  display: flex;
+  flex-direction: column;
+}
+
+.emo-menu-sheet b {
+  padding: 4px 8px 10px;
+  font-size: 14px;
+}
+
+.emo-menu-sheet button {
+  height: 48px;
+  border: 0;
+  background: none;
+  text-align: left;
+  padding: 0 8px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.emo-my-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.emo-my-item {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 16px;
+  padding: 10px 6px 10px 10px;
+}
+
+.emo-my-main {
+  flex: 1;
+  display: flex;
+  gap: 12px;
+  border: 0;
+  background: none;
+  text-align: left;
+  min-width: 0;
+}
+
+.emo-my-main > img {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.emo-my-main b {
+  display: block;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.emo-my-main span {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.emo-my-previews {
+  display: flex;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.emo-my-previews img {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+}
+
+.emo-chat-scroll {
+  background: #ececf0;
+}
+
+.emo-chat-log {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.emo-bubble {
+  align-self: flex-end;
+  max-width: 78%;
+  background: #fff;
+  border-radius: 16px 16px 4px 16px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.emo-bubble-emo {
+  padding: 6px;
+  background: transparent;
+}
+
+.emo-bubble-emo img {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  display: block;
+}
+
+.emo-picker {
+  background: #fff;
+  flex-shrink: 0;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.emo-composer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px 8px;
+}
+
+.emo-plus {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid #e4e4e8;
+  background: #fff;
+  color: #c2c2c6;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.emo-composer-field {
+  flex: 1;
+  min-width: 0;
+  height: 40px;
+  border-radius: 20px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  padding: 0 4px 0 14px;
+  gap: 6px;
+}
+
+.emo-composer-field input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  background: none;
+  font-size: 14px;
+  color: #222;
+  outline: none;
+}
+
+.emo-composer-field input::placeholder {
+  color: #c5c5c8;
+}
+
+.emo-composer-draft {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.emo-composer-draft img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+}
+
+.emo-composer-x {
+  width: 16px;
+  height: 16px;
+  border: 0;
+  border-radius: 50%;
+  background: #e4e4e8;
+  color: #666;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.emo-input-smile {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: none;
+  color: #c5c5c8;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.emo-input-smile.on {
+  color: #9a9a9e;
+}
+
+.emo-send {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: #c8c8ce;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.emo-send:disabled {
+  background: #c8c8ce;
+  color: #fff;
+}
+
+.emo-send:not(:disabled) {
+  background: var(--red);
+}
+
+.emo-picker-body {
+  padding: 8px 20px 12px;
+}
+
+.emo-recent p {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #9b9b9b;
+}
+
+.emo-recent-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.emo-recent-row button {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: none;
+  padding: 0;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.emo-recent-row img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  display: block;
+}
+
+.emo-picker .emo-grid {
+  min-height: 168px;
+  max-height: 220px;
+  overflow: auto;
+  margin-top: 8px;
+}
+
+.emo-emoji-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  row-gap: 10px;
+  margin-top: 4px;
+  max-height: 220px;
+  overflow: auto;
+}
+
+.emo-emoji-grid button {
+  height: 44px;
+  border: 0;
+  background: none;
+  padding: 0;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.emo-set-tabs {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin-bottom: 8px;
+}
+
+.emo-set-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.emo-pack-tab {
+  flex: 0 0 64px;
+  width: 64px;
+  border: 0;
+  background: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.emo-pack-ico {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  line-height: 1;
+  overflow: hidden;
+}
+
+.emo-pack-tab.on .emo-pack-ico {
+  background: #f1f1f3;
+}
+
+.emo-pack-ico img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+}
+
+.emo-pack-ico.shop {
+  color: #b0b0b4;
+}
+
+.emo-pack-tab em {
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 500;
+  color: #8a8a8e;
+  max-width: 64px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@keyframes emo-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.emo-series-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-top: 8px;
+  border: 0;
+  background: none;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b6b70;
+}
+
+.emo-series-link span {
+  font-size: 14px;
+  font-weight: 700;
+  color: #404040;
+  line-height: 1;
+}
+
+.emo-series-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.emo-own-state {
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.emo-buy-bar {
+  display: flex;
+  gap: 8px;
+}
+
+.emo-buy-bar .btn-red,
+.phone .footer .btn-red {
+  height: 60px;
+}
+
+.emo-gift-btn {
+  width: 72px;
+  height: 60px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.emo-gift-btn em {
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.emo-gift-btn:disabled {
+  opacity: 0.4;
+}
+
+.emo-buy-sheet {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.emo-sheet-handle {
+  display: block;
+  width: 36px;
+  height: 4px;
+  margin: 0 auto 14px;
+  border-radius: 2px;
+  background: #e4e4e7;
+}
+
+.emo-buy-sheet h3 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.emo-buy-thumb {
+  width: 72px;
+  height: 72px;
+  margin: 16px auto 18px;
+  object-fit: contain;
+  display: block;
+}
+
+.emo-buy-dl {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.emo-buy-dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.emo-buy-dl dt {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.emo-buy-dl dd {
+  font-size: 13px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.emo-buy-warn {
+  margin: 16px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+  text-align: left;
+}
+
+.emo-confirm-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.emo-confirm-actions .btn-ghost,
+.emo-confirm-actions .btn-red {
+  height: 60px;
+}
+
+.emo-buy-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.emo-buy-row img {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.emo-buy-row b {
+  display: block;
+  font-size: 15px;
+}
+
+.emo-buy-row span {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.emo-buy-price {
+  margin: 14px 0;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.emo-center-dim {
+  align-items: center;
+  padding: 24px;
+}
+
+.emo-modal {
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  padding: 22px 16px 16px;
+  text-align: center;
+}
+
+.emo-modal b {
+  display: block;
+  font-size: 16px;
+}
+
+.emo-modal p {
+  margin: 8px 0 16px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.emo-modal .btn-red {
+  margin-bottom: 8px;
+}
+
+.emo-modal-ico {
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.emo-friend-list {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.emo-friend {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 0;
+  border-radius: 0;
+  background: #fff;
+  text-align: left;
+}
+
+.emo-friend + .emo-friend {
+  box-shadow: inset 0 1px 0 #f0f0f2;
+}
+
+.emo-friend.static {
+  border-radius: 16px;
+}
+
+.emo-friend.on {
+  background: #fff7f8;
+}
+
+.emo-friend.off {
+  opacity: 0.55;
+}
+
+.emo-friend-avatar {
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #e8e8ea;
+  color: #b4b4b8;
+  display: grid;
+  place-items: center;
+}
+
+.emo-friend b {
+  display: block;
+  font-size: 14px;
+}
+
+.emo-friend span {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.emo-friend em {
+  margin-left: auto;
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.emo-friend-check {
+  margin-left: auto;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #404040;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  font-style: normal;
+}
+
+.emo-msg-label {
+  display: block;
+  margin-top: 16px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.emo-msg-label textarea {
+  display: block;
+  width: 100%;
+  min-height: 80px;
+  margin-top: 8px;
+  padding: 12px;
+  border: 0;
+  border-radius: 12px;
+  background: #fff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  resize: none;
+}
+
+.emo-msg-label i {
+  display: block;
+  margin-top: 6px;
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: right;
+}
+
+.emo-recv-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.emo-recv-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 16px;
+  background: #fff;
+  text-align: left;
+}
+
+.emo-recv-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.emo-recv-avatar.lg {
+  width: 56px;
+  height: 56px;
+}
+
+.emo-recv-card b,
+.emo-recv-hero b {
+  display: block;
+  font-size: 14px;
+}
+
+.emo-recv-card span {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.emo-recv-card em {
+  display: block;
+  margin-top: 4px;
+  font-style: normal;
+  font-size: 12px;
+  color: #404040;
+}
+
+.emo-recv-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  margin-left: auto;
+  object-fit: cover;
+}
+
+.emo-recv-hero {
+  text-align: center;
+  padding: 20px 16px;
+}
+
+.emo-recv-hero .emo-recv-avatar {
+  margin: 0 auto 8px;
+}
+
+.emo-recv-set {
+  width: 96px;
+  height: 96px;
+  border-radius: 16px;
+  margin: 14px auto 10px;
+  object-fit: cover;
+  display: block;
+}
+
+.emo-recv-hero h2 {
+  font-size: 17px;
+}
