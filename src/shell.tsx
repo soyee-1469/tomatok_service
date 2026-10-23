@@ -53,6 +53,9 @@ const GNB_ITEMS = [
   { to: '/more', label: '더보기', icon: '⋯' },
 ] as const
 
+/** 지갑 탭 → 포토카드·지갑 시안(정적 페이지) */
+const WALLET_URL = `${import.meta.env.BASE_URL}photocard/app/`
+
 export function Gnb() {
   const loc = useLocation()
   return (
@@ -63,6 +66,16 @@ export function Gnb() {
             ? loc.pathname.startsWith(item.to)
             : loc.pathname === item.to
         const center = 'center' in item && item.center
+        if (item.to === '/wallet') {
+          return (
+            <a key={item.to} href={WALLET_URL} className={`gnb-item${on ? ' on' : ''} center`}>
+              <span className="gnb-ico fab" aria-hidden>
+                👜
+              </span>
+              <span className="gnb-label">{item.label}</span>
+            </a>
+          )
+        }
         return (
           <Link
             key={item.to}

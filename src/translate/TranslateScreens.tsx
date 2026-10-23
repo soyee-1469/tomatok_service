@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
+  Cards,
   CaretDown,
   ArrowsLeftRight,
   ClockCounterClockwise,
@@ -50,6 +51,9 @@ async function copyText(text: string) {
   }
 }
 
+/** 포토카드·지갑 시안: public/photocard 의 정적 페이지 */
+const PHOTOCARD_URL = `${import.meta.env.BASE_URL}photocard/app/`
+
 export function ServicesHome() {
   const nav = useNavigate()
   return (
@@ -66,6 +70,14 @@ export function ServicesHome() {
                 <b>기본번역</b>
               </span>
             </button>
+            <a className="tr-svc" href={PHOTOCARD_URL}>
+              <span className="tr-svc-ico">
+                <Cards size={22} {...PH} />
+              </span>
+              <span>
+                <b>포토카드</b>
+              </span>
+            </a>
           </div>
         </div>
       </div>

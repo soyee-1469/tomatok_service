@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-기본 주소: http://127.0.0.1:5174
+기본 주소: http://localhost:5173/tomatok_translate/
 
 ## 화면
 
@@ -24,11 +24,17 @@ npm run dev
   2. **확인**
   3. **완료**
 
-왼쪽 사이드바에서 화면을 바로 이동할 수 있습니다.
-
 ## 배포
 
 `main`에 푸시하면 GitHub Actions(`.github/workflows/deploy.yml`)가 빌드해서 GitHub Pages에 올립니다.
 
 - 주소: https://soyee-1469.github.io/tomatok_translate/
 - 화면별 주소 예: `/services`, `/services/translate`, `/emoticon`, `/emoticon/new`, `/emoticon/my`
+
+## 포토카드 · 지갑 시안
+
+`public/photocard/`에 정적 HTML/JS로 들어 있습니다(원본: `photocard/service`, `photocard/assets`). 빌드 없이 그대로 서빙됩니다.
+
+- 포토카드 앱: `/photocard/app/`
+- 등록 화면: `/photocard/register/`
+- 서비스 메뉴의 **포토카드**, 하단 **지갑** 탭에서 진입

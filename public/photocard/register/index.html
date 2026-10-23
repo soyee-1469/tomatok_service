@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>포토카드 관리자</title>
+    <link rel="stylesheet" href="./styles.css?v=57" />
+  </head>
+  <body>
+    <div class="office">
+    <nav class="side-nav" id="admin-nav">
+      <p class="kicker">포토카드 관리자</p>
+      <button type="button" data-menu="dash">대시보드</button>
+      <p class="group">상품</p>
+      <button type="button" data-menu="category">가수</button>
+      <button type="button" data-menu="cards">카드관리</button>
+      <p class="group">주문/배송</p>
+      <button type="button" data-menu="orders">주문관리</button>
+      <button type="button" data-menu="ship">출고관리</button>
+      <button type="button" data-menu="track">배송현황</button>
+      <p class="group">콘텐츠</p>
+      <button type="button" data-menu="banner">배너관리</button>
+      <button type="button" data-menu="notice">공지관리</button>
+      <p class="group">설정</p>
+      <button type="button" data-menu="policy">배송정책</button>
+    </nav>
+    <div class="office-main">
+    <header class="top">
+      <div>
+        <h1 id="page-title">대시보드</h1>
+      </div>
+      <div class="reg-example" id="reg-example" hidden>
+        <strong>등록 예시</strong>
+        <p>JUMP의 로제 → 그룹 / BLACKPINK / JUMP</p>
+        <p>rosie의 로제 → 개인 / ROSÉ / rosie</p>
+      </div>
+    </header>
+    <div class="layout" id="layout">
+      <aside>
+        <label class="search">검색
+          <input id="query" type="search" placeholder="가수명, 앨범명, 행사명" />
+        </label>
+        <div id="pack-list"></div>
+      </aside>
+      <main id="main"></main>
+      <section id="detail" hidden></section>
+    </div>
+    </div>
+    </div>
+    <script src="./data.js?v=13"></script>
+    <script src="./app.js?v=61"></script>
+  </body>
+</html>
