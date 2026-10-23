@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+  <!-- 보내기: 위 화살표 + 아래 U -->
+  <path d="M12 14.5V5"/>
+  <path d="M8.2 8.8 12 5l3.8 3.8"/>
+  <path d="M5.5 18.2c1.7 1.5 3.9 2.3 6.5 2.3s4.8-.8 6.5-2.3"/>
+</svg>

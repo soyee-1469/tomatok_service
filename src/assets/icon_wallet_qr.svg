@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#555" fill-rule="evenodd">
+  <!-- top-left finder: frame + center -->
+  <path d="M3 3h8v8H3V3zm1.6 1.6v4.8h4.8V4.6H4.6z"/>
+  <rect x="6.2" y="6.2" width="1.6" height="1.6" fill-rule="nonzero"/>
+  <!-- top-right finder -->
+  <path d="M13 3h8v8h-8V3zm1.6 1.6v4.8h4.8V4.6h-4.8z"/>
+  <rect x="16.2" y="6.2" width="1.6" height="1.6" fill-rule="nonzero"/>
+  <!-- bottom-left finder -->
+  <path d="M3 13h8v8H3v-8zm1.6 1.6v4.8h4.8v-4.8H4.6z"/>
+  <rect x="6.2" y="16.2" width="1.6" height="1.6" fill-rule="nonzero"/>
+  <!-- data modules (bottom-right) -->
+  <rect x="13" y="13" width="2.2" height="2.2" fill-rule="nonzero"/>
+  <rect x="16.4" y="13" width="2.2" height="2.2" fill-rule="nonzero"/>
+  <rect x="19.8" y="13" width="1.2" height="2.2" fill-rule="nonzero"/>
+  <rect x="13" y="16.4" width="2.2" height="2.2" fill-rule="nonzero"/>
+  <rect x="19.8" y="16.4" width="1.2" height="2.2" fill-rule="nonzero"/>
+  <rect x="13" y="19.8" width="2.2" height="1.2" fill-rule="nonzero"/>
+  <rect x="16.4" y="19.8" width="2.2" height="1.2" fill-rule="nonzero"/>
+  <rect x="19.8" y="19.8" width="1.2" height="1.2" fill-rule="nonzero"/>
+  <rect x="16.4" y="11" width="2.2" height="1.4" fill-rule="nonzero"/>
+</svg>

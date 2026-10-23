@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+  <circle cx="12" cy="12" r="12" fill="#AB9FF2"/>
+  <!-- official-style ghost: white sheet, lean right, scalloped bottom -->
+  <path
+    fill="#FFFFFF"
+    d="M8.1 8.4c0-2.55 2.05-4.4 4.55-4.4 2.7 0 4.65 1.95 4.65 4.7v6.85c0 .55-.62.9-1.08.58l-1.02-.72a.7.7 0 0 0-.82 0l-1.05.74a.7.7 0 0 1-.82 0l-1.05-.74a.7.7 0 0 0-.82 0l-1.02.72c-.46.32-1.08-.03-1.08-.58V8.4z"
+  />
+  <circle cx="11.15" cy="9.55" r="0.95" fill="#1A1A2E"/>
+  <circle cx="14.55" cy="9.55" r="0.95" fill="#1A1A2E"/>
+</svg>

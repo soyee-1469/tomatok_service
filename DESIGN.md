@@ -9,6 +9,7 @@
 - 공용 셸: `src/shell.tsx`
 - 번역: `src/translate/*`, `src/translate.css`
 - 이모티콘: `src/emoticon/*`, `src/emoticon.css`
+- 지갑: `/wallet`, `/wallet/all`, `/wallet/add`, `/wallet/:id/*` (NFT·거래·TP 교환) — `src/wallet/*`, `src/wallet.css`, `src/assets/icon_wallet_*`
 
 ## 캔버스
 

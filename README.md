@@ -31,14 +31,19 @@ npm run dev
 - 주소: https://soyee-1469.github.io/tomatok_translate/
 - 화면별 주소 예: `/services`, `/services/translate`, `/emoticon`, `/emoticon/new`, `/emoticon/my`
 
-## 지갑 탭 → 지갑 슬라이드 (별도 프로젝트)
+## 지갑 (Phantom 멀티 지갑 · TOTT 목업)
 
-지갑 화면은 `바이탈링/ring` 앱의 `/wallet`(지갑 여러 개 슬라이드)에 있고, 하단 **지갑** 탭은 그 페이지로 링크만 겁니다. 포토카드 앱의 **지갑 연결하기** 버튼도 같은 곳으로 갑니다.
+하단 **지갑** 탭 → `/wallet`. 지갑이 여러 개면 카드 슬라이드로 넘기고, 카드 안의 **포인트(TP) › 교환하기**로 TOTT → TP 교환 화면에 들어갑니다.
 
-```bash
-cd ../바이탈링/ring
-npm run dev   # http://localhost:5180
-```
+| 화면 | 주소 |
+| --- | --- |
+| 지갑 홈(슬라이드) | `/wallet` |
+| 지갑 관리(전체·대표·순서) | `/wallet/all` |
+| 지갑 추가(Phantom 연결) | `/wallet/add` |
+| TOTT · TP 교환 | `/wallet/:id/exchange` |
+| NFT 목록·상세 | `/wallet/:id/nfts`, `/wallet/:id/nfts/:nftId` |
+| 거래 내역·상세 | `/wallet/:id/txs`, `/wallet/:id/txs/:txId` |
 
-이후 지갑 탭을 누르면 http://localhost:5180/wallet 로 이동합니다.
-다른 주소를 쓰려면 `.env`에 `VITE_WALLET_URL=...` 을 넣으세요.
+- 교환 규칙은 포토카드 앱과 같습니다: 1 TOTT = `TOTT_KRW`(9.134) TP, 1 TP = ₩1, 최소 50 TOTT. 교환하면 지갑 TOTT가 줄고 TP가 늘며 거래 내역에 **TP 교환**으로 남습니다.
+- 지갑 화면에서는 왼쪽에 시안 전환 패널(지갑 1개/여러 개, 지갑 추가 모드)이 보입니다.
+- 포토카드 앱(`photocard/service/app`)의 **지갑 연결하기** 버튼은 로컬 주소 http://localhost:5173/tomatok_translate/wallet 로 옵니다.

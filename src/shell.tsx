@@ -53,13 +53,6 @@ const GNB_ITEMS = [
   { to: '/more', label: '더보기', icon: '⋯' },
 ] as const
 
-/**
- * 지갑 탭 → 지갑 슬라이드 화면(별도 프로젝트 바이탈링/ring, /wallet).
- * 로컬: ring 폴더에서 `npm run dev` (포트 5180) 실행 후 열림.
- * 다른 주소를 쓰려면 .env 에 VITE_WALLET_URL 을 넣는다.
- */
-const WALLET_URL: string = import.meta.env.VITE_WALLET_URL ?? 'http://localhost:5180/wallet'
-
 export function Gnb() {
   const loc = useLocation()
   return (
@@ -70,16 +63,6 @@ export function Gnb() {
             ? loc.pathname.startsWith(item.to)
             : loc.pathname === item.to
         const center = 'center' in item && item.center
-        if (item.to === '/wallet') {
-          return (
-            <a key={item.to} href={WALLET_URL} className={`gnb-item${on ? ' on' : ''} center`}>
-              <span className="gnb-ico fab" aria-hidden>
-                👜
-              </span>
-              <span className="gnb-label">{item.label}</span>
-            </a>
-          )
-        }
         return (
           <Link
             key={item.to}
