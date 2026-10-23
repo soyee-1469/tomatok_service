@@ -53,8 +53,12 @@ const GNB_ITEMS = [
   { to: '/more', label: '더보기', icon: '⋯' },
 ] as const
 
-/** 지갑 탭 → 포토카드·지갑 시안(정적 페이지) */
-const WALLET_URL = `${import.meta.env.BASE_URL}photocard/app/`
+/**
+ * 지갑 탭 → 포토카드·지갑 시안(별도 프로젝트 photocard/service/app).
+ * 로컬: photocard 폴더에서 `python3 -m http.server 5500` 실행 후 열림.
+ * 다른 주소를 쓰려면 .env 에 VITE_WALLET_URL 을 넣는다.
+ */
+const WALLET_URL: string = import.meta.env.VITE_WALLET_URL ?? 'http://localhost:5500/service/app/'
 
 export function Gnb() {
   const loc = useLocation()
